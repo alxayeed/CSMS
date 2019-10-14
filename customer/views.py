@@ -4,4 +4,4 @@ from django.http import HttpResponse
 # Create your views here.
 def index(request):
 	print(request)
-	return HttpResponse('Welcome to the customer module!')
+	return render(request, 'admin/index.html')

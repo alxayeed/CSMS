@@ -5,5 +5,5 @@ from customer import urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('customer/', include('customer.urls')),
+    path('', include('customer.urls')),
 ]
