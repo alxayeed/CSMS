@@ -1,4 +1,4 @@
-{% extends 'admin/base.html' %}
+{% extends 'customer/customerb.html' %}
 {% load static %}
 
 {% block content%}
@@ -10,7 +10,7 @@
     <div class="intro-content">
       <h2>Welcome to Runtastic Courier Service</h2>
       <div>
-        <a href="#signup" class="btn-get-started scrollto">Sign Up</a>
+        <a href="{% url 'sign up' %}" class="btn-get-started scrollto">Sign Up</a>
         <a href="#login" class="btn-projects scrollto">Log In</a>
       </div>
     </div>
@@ -144,15 +144,15 @@
             <div class="contact-address">
               <i class="ion-ios-location-outline"></i>
               <h3>Address</h3>
-              <address>A108 Adam Street, NY 535022, USA</address>
+              <address>Dhaka,Bangladesh</address>
             </div>
           </div>
 
           <div class="col-md-4">
             <div class="contact-phone">
               <i class="ion-ios-telephone-outline"></i>
-              <h3>Phone Number</h3>
-              <p><a href="tel:+155895548855">+1 5589 55488 55</a></p>
+              <h3>Contact Number</h3>
+              <p><a href="tel:+155895548855">16103 213</a></p>
             </div>
           </div>
 

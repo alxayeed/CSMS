@@ -46,7 +46,8 @@ ROOT_URLCONF = 'CSMS.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': ['templates'],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+                 os.path.join(BASE_DIR, 'customer','templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

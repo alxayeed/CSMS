@@ -1,0 +1,27 @@
+{% extends 'customer/customerb.html' %}
+{% load static %}
+
+{% block content%}
+  
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
+
+    <div class="intro-content">
+      <h2>Please Fill Up this Form</h2>
+      <div>
+        <form class="form" method="post" action="sign-up">
+        	{% csrf_token %}
+
+        	{{ signup_form.as_p}}
+        	<input type="submit" name="Sign Up" class="btn-get-started scrollto">
+
+        </form>
+      </div>
+    </div>
+
+  </section><!-- #intro -->
+
+  {% endblock %}
+
