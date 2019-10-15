@@ -1,7 +1,26 @@
 {% extends 'customer/base.html' %}
+{% load static %}
 
-{% block content %}
+{% block content%}
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
 
-<h1>{{ context }}</h1>
+    <div class="intro-content">
+      <h2>{{ context }}</h2>
+    </div>
 
-{% endblock %}
+    <div id="intro-carousel" class="owl-carousel" >
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/1.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/2.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/3.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/4.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/5.jpg');"></div>
+    </div>
+
+  </section><!-- #intro -->
+
+  
+
+  {% endblock %}

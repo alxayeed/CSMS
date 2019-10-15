@@ -6,7 +6,7 @@ from django.db import connection
 
 # Create your views here.
 def customer_index(request):
-	return render(request, 'customer/customeri.html')
+	return render(request, 'customer/base.html')
 
 def customer_signup(request):
 	if request.method == 'POST':
@@ -35,7 +35,7 @@ def customer_signup(request):
 				u = User(first_name=first_name,last_name=last_name,email=email,password=password)
 				u.save()
 				message = 'Data Saved Successfully'
-				return render(request,'index.html',{'context':message })
+				return render(request,'customer/login.html',{'context':message })
 
 	return render(request,'sign_up.html')
 
