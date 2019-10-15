@@ -1,4 +1,4 @@
-{% extends 'customer/customerb.html' %}
+{% extends 'customer/base.html' %}
 {% load static %}
 
 {% block content%}
@@ -8,10 +8,12 @@
   <section id="intro">
 
     <div class="intro-content">
-      <h2>Welcome to Runtastic Courier Service</h2>
+      <h1>{{ context }}</h1>
+      <h3>Welcome to Runtastic Courier Service</h3>
       <div>
-        <a href="{% url 'sign up' %}" class="btn-get-started scrollto">Sign Up</a>
-        <a href="#login" class="btn-projects scrollto">Log In</a>
+        
+        <a href="customer/sign-up/" class="btn-get-started scrollto">Sign Up</a>
+        <a href="{% url 'log in' %}" class="btn-projects scrollto">Log In</a>
       </div>
     </div>
 

@@ -7,6 +7,6 @@ def index(request):
 	print(request)
 	return render(request, 'index.html')
 
-def sign_up(request):
-	form = UserCreationForm()
-	return render(request,'sign_up.html',{'signup_form':form})
+# def sign_up(request):
+# 	form = UserCreationForm()
+# 	return render(request,'sign_up.html',{'signup_form':form})
