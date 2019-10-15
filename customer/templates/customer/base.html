@@ -77,14 +77,16 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
           <li><a href="{% url 'customer_index' %}">Customer</a></li>
-          <li><a href="#team">Team</a></li>
+          <li class="menu-has-children"><a href="">Order</a>
+            <ul>
+              <li><a href="#order">Place an Order</a></li>
+              <li><a href="#history">Your Orders</a></li>
+            </ul>
           <li class="menu-has-children"><a href="">User</a>
             <ul>
-              <li><a href="{% url 'sign up' %}">Sign Up</a></li>
-              <li><a href="{% url 'log in' %}">Log In</a></li>
+              <li><a href="#profile">Profile</a></li>
+              <li><a href="{% url 'log out' %}">Log Out</a></li>
              <!--  <li><a href="#">Drop Down 4</a></li>
               <li><a href="#">Drop Down 5</a></li> -->
             </ul>
@@ -120,7 +122,7 @@
           Licensing information: https://bootstrapmade.com/license/
           Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/buy/?theme=Reveal
         -->
-       <i class="fa fa-facebook"></i> AL Xayeed
+       <i class="fa fa-facebook"></i> Al Xayeed
       </div>
     </div>
   </footer><!-- #footer -->

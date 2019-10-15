@@ -62,3 +62,15 @@ def customer_login(request):
 					message = 'Email not found!'
 					return render(request,'customer/login.html',{'context':message })
 	return render(request,'customer/login.html')
+
+
+def customer_logout(request):
+	print(request.session)
+	session = request.session
+	if session:
+		del session
+		message = 'Successfully logged out'
+		return render(request,'customer/login.html',{'context':message })
+
+
+	return render(request,'customer/index.html',{"context":session})
