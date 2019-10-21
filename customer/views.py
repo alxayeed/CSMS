@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import User
+from django.db import connection
 
 
 # Create your views here.
