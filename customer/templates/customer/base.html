@@ -77,18 +77,15 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="{% url 'customer_index' %}">Customer</a></li>
-          <li class="menu-has-children"><a href="">Order</a>
+          <li class="menu-has-children"><a href="#">Order</a>
             <ul>
               <li><a href="#order">Place an Order</a></li>
               <li><a href="#history">Your Orders</a></li>
             </ul>
-          <li class="menu-has-children"><a href="">User</a>
+          <li class="menu-has-children"><a href="#">{{user}}</a>
             <ul>
-              <li><a href="#profile">Profile</a></li>
+              <li><a href="{% url 'profile' %}">Profile</a></li>
               <li><a href="{% url 'log out' %}">Log Out</a></li>
-             <!--  <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li> -->
             </ul>
           </li>
           <li><a href="#contact">Contact</a></li>
