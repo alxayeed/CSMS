@@ -1,0 +1,59 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+
+{% block title %}
+	{{ user }}
+{% endblock %}
+
+{% block content %}
+ <section id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Profile</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInLeft">
+              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <h4 class="title"><a href="">Image</a></h4>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInRight">
+              <h1 class="title">{{ user }}</h1>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInLeft" data-wow-delay="0.2s">
+              <h4 class="title">First name</h4>
+              <h4 class="title">Last name</h4>
+              <h4 class="title">Email</h4>
+            </div>
+          </div>
+
+          <div class="col-lg-6">
+            <div class="box wow fadeInRight" data-wow-delay="0.2s">
+              <h4 class="title">{{ logged_user.1}}</h4>
+              <h4 class="title">{{ logged_user.2}}</h4>
+              <h4 class="title">{{ logged_user.3}}</h4>
+            </div>
+             <button href="#about" class="btn-get-started scrollto">Update</button>
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section><!-- #services -->
+
+    
+     
+	
+
+{% endblock %}

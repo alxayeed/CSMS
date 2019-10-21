@@ -99,6 +99,6 @@ def profile(request):
     
 
     
-    return render(request,'customer/profile.html',{'user':profile_name})
+    return render(request,'customer/profile.html',{'user':profile_name,'logged_user':logged_user })
 
 
