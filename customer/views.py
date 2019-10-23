@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render,redirect
 from .models import User
 from django.db import connection
 
@@ -93,12 +93,38 @@ def customer_logout(request):
 def profile(request):
     logged_user = request.session['user']
     profile_name  = logged_user[1]+' '+logged_user[2]
-    print(profile_name)
-    
-    
-    
-
     
     return render(request,'customer/profile.html',{'user':profile_name,'logged_user':logged_user })
+
+def update_profile(request):
+    logged_user = request.session['user']
+    u = User.objects.get(email=logged_user[3])
+    print(u.first_name,request.method)
+    if request.method == 'GET':
+        profile_name  = u.first_name+' '+u.last_name
+
+        return render(request,'customer/update_profile.html',{'user':profile_name,'logged_user':logged_user})
+
+    if request.method == 'POST':
+        if request.POST.get('firstname'):
+            u.first_name = request.POST.get('firstname')
+        else :
+            u.first_name 
+        if request.POST.get('lastname'):
+            u.last_name = request.POST.get('lastname')
+        else :
+            u.last_name
+        if request.POST.get('email'):
+            u.email = request.POST.get('email')
+        else :
+            u.email
+
+        u.save()
+
+    return render(request,'customer/profile.html')
+
+
+
+
 
 
