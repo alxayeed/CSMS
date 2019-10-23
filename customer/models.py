@@ -18,7 +18,7 @@ class Order(models.Model):
 	reciever_name = models.CharField(max_length=100)
 	reciever_contact = models.CharField(max_length=11)
 	reciever_address = models.TextField(max_length=100)
-	product_quantity = models.IntegerField()
+	product_quantity = models.BigIntegerField()
 	shipment_cost = models.IntegerField()
 
 	def __str__(self):

@@ -1,11 +1,11 @@
 from django.shortcuts import render,redirect
-from .models import User
+from .models import User,Order
 from django.db import connection
 
 
 # Create your views here.
 def customer_index(request):
-    return render(request, 'customer/base.html')
+    return render(request, 'customer/index.html')
 
 def customer_signup(request):
     if request.method == 'POST':
@@ -124,7 +124,48 @@ def update_profile(request):
     return render(request,'customer/profile.html')
 
 
+def make_order(request):
+    logged_user = request.session['user']
+    u = User.objects.get(email=logged_user[3])
+    profile_name  = u.first_name+' '+u.last_name
 
+    if request.method == 'GET':
+        return render(request,'customer/make_order.html',{'user':profile_name })
+
+    if request.method == 'POST':
+        sender_name = request.POST.get('sender_name')
+        sender_contact = request.POST.get('sender_contact')
+        sender_address = request.POST.get('sender_address')
+        reciever_name = request.POST.get('reciever_name')
+        reciever_contact = request.POST.get('reciever_contact')
+        reciever_address = request.POST.get('reciever_address')
+        quantity = request.POST.get('product_quantity')
+        shipment_cost = 50
+
+        order = Order(sender_name = sender_name,
+        sender_contact=sender_contact,
+        sender_address = sender_address,
+        reciever_name = reciever_name,
+        reciever_contact = reciever_contact,
+        reciever_address = reciever_address,
+        product_quantity = quantity,shipment_cost=shipment_cost)
+
+
+        order.save()
+        order = Order.objects.get(sender_name=sender_name)
+        
+        
+
+
+
+    return render(request,'customer/order_details.html',{'order':order,'user':profile_name})
+
+def view_order(request):
+    pass
+
+
+def order_details(request):
+    pass
 
 
 

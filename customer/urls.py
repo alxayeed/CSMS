@@ -10,4 +10,5 @@ urlpatterns = [
     path('log-out/',views.customer_logout,name='log out'),
     path('profile/',views.profile,name='profile'),
     path('update-profile/',views.update_profile,name='update profile'),
+    path('make-order/',views.make_order,name='make order'),
 ]

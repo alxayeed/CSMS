@@ -1,0 +1,84 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block title %}
+	make an order
+{% endblock %}
+
+{% block content %}
+
+<section id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Make an Order</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="box wow fadeInLeft">
+              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <h4 class="title"><a href="">Image</a></h4>
+              
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="box wow fadeInRight">
+              <h1 class="title">{{ user }}</h1>
+            </div>
+          </div>
+
+          <div class="col-lg-4">
+            <div class="fadeInLeft" data-wow-delay="0.2s">
+              <h4 class="title">Sender Name</h4>
+              <h4 class="title">Sender Contact No</h4>
+              <h4 class="title">Sender Adress</h4>
+              <br>
+              <h4 class="title">Reciever Name</h4>
+              <h4 class="title">Reciever Contact No</h4>
+              <h4 class="title">Reciever Adress</h4>
+              <h4 class="title">Product Quantity</h4>
+            </div>
+          </div>
+
+          <div class="col-lg-8">
+            <div class="" data-wow-delay="0.2s">
+            <form action="{% url 'make order' %}" method="POST">
+            {% csrf_token %}
+                <div class="form-group">
+                    <input type="text" name="sender_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="sender_contact" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="sender_address" class="form-control" required>
+                </div>
+                 <div class="form-group">
+                    <input type="text" name="reciever_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="reciever_contact" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="reciever_address" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="product_quantity" placeholder="Total Weight Can't exceed 2 KG,Each Shipment costs 45 Taka " class="form-control" required>
+                </div>
+                <div style="padding-left:30%;">
+                   <input type="submit" name="Update Now" class="btn-get-started scrollto">
+                </div>
+            </form>
+            </div>
+            
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section><!-- #services -->
+
+{% endblock %}
