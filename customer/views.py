@@ -149,13 +149,27 @@ def make_order(request):
         reciever_name = request.POST.get('reciever_name')
         reciever_contact = request.POST.get('reciever_contact')
         reciever_address = request.POST.get('reciever_address')
-        quantity = request.POST.get('product_quantity')
-        shipment_cost = 50
+        quantity = int(request.POST.get('product_quantity'))
+        payment_method = request.POST.get('payment_method')
+        print(payment_method)
+        print(type(quantity))
+        shipment_cost = quantity*50
+        print(shipment_cost)
 
-        order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_quantity=quantity,shipment_cost=shipment_cost)
-                
+        if payment_method == 'bkash':
+            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_quantity=quantity,payment_method=payment_method,shipment_cost=shipment_cost)
+                    
 
-        order.save()
+            order.save()
+            return render(request,'customer/bkash.html',{'user':profile_name} )
+
+            
+        else:
+            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_quantity=quantity,payment_method=payment_method,shipment_cost=shipment_cost)
+                    
+
+            order.save()
+
 
         message = 'Order Recorded Successfully'
         
@@ -164,7 +178,7 @@ def make_order(request):
 
 
 
-    return render(request,'customer/index.html',{'context':message })
+    return render(request,'customer/index.html',{'context':message,'user':profile_name  })
 
 def view_order(request):
     logged_user = request.session['user']
@@ -175,8 +189,12 @@ def view_order(request):
         order_by = logged_user[1]
         print(order_by)
 
-        order =  Order.objects.get(sender_name=order_by)
-        print(order.reciever_name)
+        try:
+            order =  Order.objects.get(sender_name=order_by)
+            print(order.reciever_name)
+        except Exception as e:
+            print('The Exception is ',e)
+
         
     return render(request,'customer/view_order.html',{'context':order,'user':profile_name})
 

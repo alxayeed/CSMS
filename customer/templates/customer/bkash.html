@@ -1,0 +1,23 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+
+{% block title %}
+  bkash gateway
+{% endblock %}
+
+{% block content%}
+<div style="padding-top: 5%;padding-left:30%;max-width: 70%">
+<h3>Please Enter your Transaction ID here</h3>
+
+<div class="form-group">
+  <input type="text" name="bkash" class="form-control" >
+</div>
+<div style="color:rgb(255, 0, 128)">
+<input class="btn btn-danger btn-lg btn-block"  type="submit" name="Update Now">
+</div>
+</div>
+
+  
+
+{% endblock %}
+

@@ -1,7 +1,7 @@
 {% extends 'customer/base.html' %}
 {% load static %}
 {% block title %}
-  make an order
+  Your  order
 {% endblock %}
 
 {% block content %}
@@ -38,6 +38,8 @@
               <h4 class="title">Reciever Contact No</h4>
               <h4 class="title">Reciever Adress</h4>
               <h4 class="title">Product Quantity</h4>
+              <h4 class="title">Shipment Charge</h4>
+              <h4 class="title">Payment Method</h4>
             </div>
           </div>
 
@@ -50,7 +52,9 @@
               <h4 class="title">{{ context.reciever_name }}</h4>
               <h4 class="title">{{ context.reciever_contact }}</h4>
               <h4 class="title">{{ context.reciever_address }}</h4>
+              <h4 class="title">{{ context.product_quantity }}</h4>
               <h4 class="title">{{ context.shipment_cost }}</h4>
+              <h4 class="title">{{ context.payment_method }}</h4>
             </div>
             
           </div>
