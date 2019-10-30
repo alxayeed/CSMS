@@ -30,9 +30,12 @@
 
           <div class="col-lg-4">
             <div class="box wow fadeInLeft" data-wow-delay="0.2s">
-              <h4 class="title">First name</h4>
+              <h4 class="title">First name</h4><br>
               <h4 class="title">Last name</h4>
               <h4 class="title">Email</h4>
+              <br>
+              <h4 class="title">contact No</h4>
+              <h4 class="title">Address</h4>
             </div>
           </div>
 
@@ -41,13 +44,19 @@
             <form action="{% url 'update profile' %}" method="POST">
             {% csrf_token %}
                 <div class="form-group">
-                    <input type="text" name="first_name" placeholder="{{ logged_user.1}}" class="form-control" >
+                    <input type="text" name="firstname" placeholder="{{ logged_user.1}}" class="form-control" >
                 </div>
                 <div class="form-group">
-                    <input type="text" name="last_name" placeholder="{{ logged_user.2}}" class="form-control" >
+                    <input type="text" name="lastname" placeholder="{{ logged_user.2}}" class="form-control" >
                 </div>
                 <div class="form-group">
                     <input type="email" name="email" placeholder="{{ logged_user.3}}" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="text" name="contact" placeholder="{{ logged_user.5}}" class="form-control" >
+                </div>
+                <div class="form-group">
+                    <input type="textd cx.'[ ''" name="address" placeholder="{{ logged_user.6}}" class="form-control" >
                 </div>
                 <div style="padding-left:30%;">
                    <input type="submit" name="Update Now" class="btn-get-started scrollto">

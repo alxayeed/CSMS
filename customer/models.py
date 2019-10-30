@@ -6,6 +6,8 @@ class User(models.Model):
 	last_name = models.CharField(max_length=50)
 	email = models.EmailField()
 	password = models.CharField(max_length=100)
+	contact_no = models.CharField(max_length=11,null=True,blank=True)
+	address = models.CharField(max_length=100,null=True,blank=True)
 
 	def __str__(self):
 		return self.first_name
@@ -20,6 +22,7 @@ class Order(models.Model):
 	reciever_address = models.TextField(max_length=100)
 	product_quantity = models.BigIntegerField()
 	shipment_cost = models.IntegerField()
+	payment_method = models.CharField(max_length=10)
 
 	def __str__(self):
 		return self.sender_name

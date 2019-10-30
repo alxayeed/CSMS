@@ -61,7 +61,7 @@ def customer_login(request):
 
                     else :
                         request.session['user'] = is_user #logged in users data is assigned to a variable
-                        message = 'Congo '+is_user[1]
+                        message = 'Welcome '+is_user[1]
                         user = is_user[1]+' '+is_user[2]
                         
                         return render(request,'customer/index.html',{'context':message,'user':user })
@@ -93,6 +93,7 @@ def customer_logout(request):
 def profile(request):
     logged_user = request.session['user']
     profile_name  = logged_user[1]+' '+logged_user[2]
+    print(logged_user)
     
     return render(request,'customer/profile.html',{'user':profile_name,'logged_user':logged_user })
 
@@ -118,10 +119,19 @@ def update_profile(request):
             u.email = request.POST.get('email')
         else :
             u.email
+        if request.POST.get('contact'):
+            u.contact_no = request.POST.get('contact')
+        else :
+            u.contact_no 
+        if request.POST.get('address'):
+            u.address = request.POST.get('address')
+        else :
+            u.address
 
         u.save()
+        print(u.first_name,u.last_name,u.email,u.contact_no,u.address)
 
-    return render(request,'customer/profile.html')
+    return render(request,'customer/login.html')
 
 
 def make_order(request):
@@ -142,26 +152,34 @@ def make_order(request):
         quantity = request.POST.get('product_quantity')
         shipment_cost = 50
 
-        order = Order(sender_name = sender_name,
-        sender_contact=sender_contact,
-        sender_address = sender_address,
-        reciever_name = reciever_name,
-        reciever_contact = reciever_contact,
-        reciever_address = reciever_address,
-        product_quantity = quantity,shipment_cost=shipment_cost)
-
+        order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_quantity=quantity,shipment_cost=shipment_cost)
+                
 
         order.save()
-        order = Order.objects.get(sender_name=sender_name)
+
+        message = 'Order Recorded Successfully'
         
         
+        
 
 
 
-    return render(request,'customer/order_details.html',{'order':order,'user':profile_name})
+    return render(request,'customer/index.html',{'context':message })
 
 def view_order(request):
-    pass
+    logged_user = request.session['user']
+    profile_name  = logged_user[1]+' '+logged_user[2]
+
+    if request.method == 'GET':
+        logged_user = request.session['user']
+        order_by = logged_user[1]
+        print(order_by)
+
+        order =  Order.objects.get(sender_name=order_by)
+        print(order.reciever_name)
+        
+    return render(request,'customer/view_order.html',{'context':order,'user':profile_name})
+
 
 
 def order_details(request):

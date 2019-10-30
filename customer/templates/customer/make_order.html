@@ -38,6 +38,7 @@
               <h4 class="title">Reciever Contact No</h4>
               <h4 class="title">Reciever Adress</h4>
               <h4 class="title">Product Quantity</h4>
+              <h4 class="title">Payment Type</h4>
             </div>
           </div>
 
@@ -66,6 +67,13 @@
                 <div class="form-group">
                     <input type="number" name="product_quantity" placeholder="Total Weight Can't exceed 2 KG,Each Shipment costs 45 Taka " class="form-control" required>
                 </div>
+                <div class="form-group">
+                        <select name="payment_method" class="form-control">
+                            <option value="COD">Cash On Delivery</option>
+                            <option value="bkash">bKash</option>
+                            
+                        </select>
+               </div>
                 <div style="padding-left:30%;">
                    <input type="submit" name="Update Now" class="btn-get-started scrollto">
                 </div>
