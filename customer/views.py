@@ -146,18 +146,19 @@ def make_order(request):
         sender_name = request.POST.get('sender_name')
         sender_contact = request.POST.get('sender_contact')
         sender_address = request.POST.get('sender_address')
+
         reciever_name = request.POST.get('reciever_name')
         reciever_contact = request.POST.get('reciever_contact')
         reciever_address = request.POST.get('reciever_address')
+        product_name = request.POST.get('product_name')
+        product_type = request.POST.get('product_type')
         quantity = int(request.POST.get('product_quantity'))
+        product_weight = request.POST.get('product_weight')
         payment_method = request.POST.get('payment_method')
-        print(payment_method)
-        print(type(quantity))
         shipment_cost = quantity*50
-        print(shipment_cost)
 
         if payment_method == 'bkash':
-            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_quantity=quantity,payment_method=payment_method,shipment_cost=shipment_cost)
+            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
                     
 
             order.save()
@@ -165,13 +166,13 @@ def make_order(request):
 
             
         else:
-            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_quantity=quantity,payment_method=payment_method,shipment_cost=shipment_cost)
+            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
                     
 
             order.save()
 
 
-        message = 'Order Recorded Successfully'
+        message = 'Order Recorded Successfully.It will take 2-5 Working Days to Deliver The product'
         
         
         
@@ -180,7 +181,21 @@ def make_order(request):
 
     return render(request,'customer/index.html',{'context':message,'user':profile_name  })
 
-def view_order(request):
+def order_list(request):
+    logged_user = request.session['user']
+    print(logged_user)
+    profile_name  = logged_user[1]+' '+logged_user[2]
+    order_by = logged_user[1]
+
+    order_list = Order.objects.all().filter(sender_name=order_by)
+
+    return render(request,'customer/order_list.html',{'order_list':order_list,'user':profile_name})
+
+        
+    
+
+
+def order_details(request):
     logged_user = request.session['user']
     profile_name  = logged_user[1]+' '+logged_user[2]
 
@@ -197,11 +212,6 @@ def view_order(request):
 
         
     return render(request,'customer/view_order.html',{'context':order,'user':profile_name})
-
-
-
-def order_details(request):
-    pass
 
 
 

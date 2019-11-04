@@ -18,63 +18,79 @@
             <div class="box wow fadeInLeft">
               <div class="icon"><i class="fa fa-bar-chart"></i></div>
               <h4 class="title"><a href="">Image</a></h4>
-              
             </div>
           </div>
-
-          <div class="col-lg-8">
+           <div class="col-lg-8">
             <div class="box wow fadeInRight">
               <h1 class="title">{{ user }}</h1>
             </div>
           </div>
 
-          <div class="col-lg-4">
-            <div class="fadeInLeft" data-wow-delay="0.2s">
-              <h4 class="title">Sender Name</h4>
-              <h4 class="title">Sender Contact No</h4>
-              <h4 class="title">Sender Adress</h4>
-              <br>
-              <h4 class="title">Reciever Name</h4>
-              <h4 class="title">Reciever Contact No</h4>
-              <h4 class="title">Reciever Adress</h4>
-              <h4 class="title">Product Quantity</h4>
-              <h4 class="title">Payment Type</h4>
-            </div>
-          </div>
 
-          <div class="col-lg-8">
-            <div class="" data-wow-delay="0.2s">
+          <div class="container" style="padding-left:20%;padding-right: 20%">
+            
             <form action="{% url 'make order' %}" method="POST">
             {% csrf_token %}
                 <div class="form-group">
+                	<label><h5 class="title">Sender Name</h4></label>
                     <input type="text" name="sender_name" class="form-control" required>
                 </div>
                 <div class="form-group">
+                	<label><h5 class="title">Sender Contact No</h4></label>
                     <input type="text" name="sender_contact" class="form-control" required>
                 </div>
                 <div class="form-group">
-                    <input type="text" name="sender_address" class="form-control" required>
+                	<label><h5 class="title">Sender Adress</h4></label>
+                    <input type="textarea" name="sender_address" class="form-control" required>
                 </div>
                  <div class="form-group">
+                 	<label><h5 class="title">Reciever Name</h4></label>
                     <input type="text" name="reciever_name" class="form-control" required>
                 </div>
                 <div class="form-group">
+                	<label><h5 class="title">Reciever Contact No</h4></label>
                     <input type="text" name="reciever_contact" class="form-control" required>
                 </div>
                 <div class="form-group">
+                	<label><h5 class="title">Reciever Adress</h4></label>
                     <input type="text" name="reciever_address" class="form-control" required>
                 </div>
                 <div class="form-group">
+                	<label><h5 class="title">Product Name</h4></label>
+                    <input type="text" name="product_name" class="form-control" required>
+                </div>
+                <label><h5 class="title">Product Type</h4></label>
+                <div class="form-group">
+                        <select name="product_type" class="form-control">
+                            <option value="Grocery">Grocery</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Electronic">Electronic</option>
+                            <option value="Books">Books</option>
+                            <option value="Health & Beauty">Health & Beauty</option>
+                            <option value="Home & Lifestyle">Home & Lifestyle</option>
+                        </select>
+               </div>
+                <div class="form-group">
+                	<label><h5 class="title">Product Quantity</h4></label>
                     <input type="number" name="product_quantity" placeholder="Total Weight Can't exceed 2 KG,Each Shipment costs 45 Taka " class="form-control" required>
                 </div>
+                <label><h5 class="title">Product Weight</h4></label>
                 <div class="form-group">
+                        <select name="product_weight" class="form-control">
+                            <option value="Below 500 gm">Below 500 gm</option>
+                            <option value="500-1000 gm">500-1000 gm</option>
+                            <option value="1-2 KG">1-2 KG</option>
+                        </select>
+               </div>
+                <div class="form-group">
+                	<label><h5 class="title"><h5 class="title">Payment Type</h4></h4></label>
                         <select name="payment_method" class="form-control">
                             <option value="COD">Cash On Delivery</option>
                             <option value="bkash">bKash</option>
                         </select>
                </div>
-                <div style="padding-left:30%;">
-                   <input type="submit" name="Update Now" class="btn-get-started scrollto">
+                <div style="padding-left: 40%">
+                   <input type="submit" name="Update Now" class="btn btn-outline-danger btn-lg">
                 </div>
             </form>
             </div>
