@@ -188,6 +188,7 @@ def order_list(request):
     order_by = logged_user[1]
 
     order_list = Order.objects.all().filter(sender_name=order_by)
+    print(order_list)
 
     return render(request,'customer/order_list.html',{'order_list':order_list,'user':profile_name})
 
