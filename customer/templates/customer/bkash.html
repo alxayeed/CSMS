@@ -7,14 +7,18 @@
 
 {% block content%}
 <div style="padding-top: 5%;padding-left:30%;max-width: 70%">
-<h3>Please Enter your Transaction ID here</h3>
+  <h1>Your order number is {{ order_id }}</h1>
+  <h3>Please Enter your Transaction ID here</h3>
 
-<div class="form-group">
-  <input type="text" name="bkash" class="form-control" >
-</div>
-<div >
-<input class="btn btn-danger btn-lg btn-block"  type="submit" name="Update Now">
-</div>
+  <form action="{% url 'payment' %}" method="POST">
+    {% csrf_token %}
+    <div class="form-group">
+      <input type="text" name="bkash" class="form-control" >
+    </div>
+    <div >
+     <input class="btn btn-danger btn-lg btn-block"  type="submit" name="Submit">
+    </div>
+  </form>
 </div>
 
   

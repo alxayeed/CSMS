@@ -11,7 +11,9 @@ urlpatterns = [
     path('profile/',views.profile,name='profile'),
     path('update-profile/',views.update_profile,name='update profile'),
     path('make-order/',views.make_order,name='make order'),
+    # path('success/',views.order_success,name='success'),
+    path('payment/',views.payment,name='payment'),
     path('order-list/',views.order_list,name='order list'),
-    path('view-order/',views.order_details,name='order details'),
+    path('view-order/<post_id>/',views.order_details,name='order details'),
 
 ]

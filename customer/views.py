@@ -1,6 +1,8 @@
 from django.shortcuts import render,redirect
 from .models import User,Order
 from django.db import connection
+import string
+import random
 
 
 # Create your views here.
@@ -134,6 +136,14 @@ def update_profile(request):
     return render(request,'customer/login.html')
 
 
+
+def orderId(stringLength=8):
+    """Generate a random string of length 8"""
+    lettersAndDigits = string.ascii_letters + string.digits
+    return ''.join(random.sample(lettersAndDigits,stringLength))
+
+
+
 def make_order(request):
     logged_user = request.session['user']
     u = User.objects.get(email=logged_user[3])
@@ -143,6 +153,7 @@ def make_order(request):
         return render(request,'customer/make_order.html',{'user':profile_name })
 
     if request.method == 'POST':
+        order_id = orderId(6)
         sender_name = request.POST.get('sender_name')
         sender_contact = request.POST.get('sender_contact')
         sender_address = request.POST.get('sender_address')
@@ -158,15 +169,15 @@ def make_order(request):
         shipment_cost = quantity*50
 
         if payment_method == 'bkash':
-            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
+            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
                     
 
             order.save()
-            return render(request,'customer/bkash.html',{'user':profile_name} )
+            return render(request,'customer/bkash.html',{'user':profile_name,'order_id':order_id} )
 
             
         else:
-            order = Order(sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
+            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
                     
 
             order.save()
@@ -179,7 +190,16 @@ def make_order(request):
 
 
 
-    return render(request,'customer/index.html',{'context':message,'user':profile_name  })
+    return render(request,'customer/notify.html',{'context':message,'user':profile_name ,'order_id':order_id })
+
+def payment(request):
+    logged_user = request.session['user']
+    u = User.objects.get(email=logged_user[3])
+    profile_name  = u.first_name+' '+u.last_name
+    message = 'Order Recorded Successfully.It will take 2-5 Working Days to Deliver The product'
+        
+    return render(request,'customer/notify.html',{'context':message,'user':profile_name  })
+
 
 def order_list(request):
     logged_user = request.session['user']
@@ -196,7 +216,7 @@ def order_list(request):
     
 
 
-def order_details(request):
+def order_details(request,post_id):
     logged_user = request.session['user']
     profile_name  = logged_user[1]+' '+logged_user[2]
 
@@ -205,11 +225,7 @@ def order_details(request):
         order_by = logged_user[1]
         print(order_by)
 
-        try:
-            order =  Order.objects.get(sender_name=order_by)
-            print(order.reciever_name)
-        except Exception as e:
-            print('The Exception is ',e)
+        order = Order.objects.get(pk = post_id)
 
         
     return render(request,'customer/view_order.html',{'context':order,'user':profile_name})

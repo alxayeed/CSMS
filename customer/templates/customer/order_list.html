@@ -33,7 +33,7 @@
             <div class="box wow fadeInRight">
               
                 {% for order in order_list %}
-                <li>{{ order.pk }}.{{ order.product_name }}</li><br>
+                <h3><a href="{% url 'order details' order.pk %}"> {{ order.product_name }}</a></h3><br>
                 
 
               {% empty %}

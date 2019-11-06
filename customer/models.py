@@ -14,6 +14,7 @@ class User(models.Model):
 
 
 class Order(models.Model):
+	order_id = models.CharField(max_length=8)
 	sender_name = models.CharField(max_length=100)
 	sender_contact = models.CharField(max_length=11)
 	sender_address = models.TextField(max_length=100)
