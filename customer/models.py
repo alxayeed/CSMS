@@ -22,6 +22,7 @@ class Order(models.Model):
 	reciever_name = models.CharField(max_length=100)
 	reciever_contact = models.CharField(max_length=11)
 	reciever_address = models.TextField(max_length=100)
+	reciever_email = models.EmailField()
 
 	product_name = models.CharField(max_length=50)
 	product_type = models.CharField(max_length=20)

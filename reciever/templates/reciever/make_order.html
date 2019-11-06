@@ -1,0 +1,95 @@
+{% extends 'customer/base.html' %}
+{% load static %}
+{% block title %}
+	make an order
+{% endblock %}
+
+{% block content %}
+
+<section id="services">
+      <div class="container">
+        <div class="section-header">
+          <h2>Make an Order</h2>
+        </div>
+
+        <div class="row">
+
+          <div class="col-lg-4">
+            <div class="box wow fadeInLeft">
+              <div class="icon"><i class="fa fa-bar-chart"></i></div>
+              <h4 class="title"><a href="">Image</a></h4>
+            </div>
+          </div>
+           <div class="col-lg-8">
+            <div class="box wow fadeInRight">
+              <h1 class="title">{{ user }}</h1>
+            </div>
+          </div>
+
+
+          <div class="container" style="padding-left:20%;padding-right: 20%">
+            
+            <form action="{% url 'make order' %}" method="POST">
+            {% csrf_token %}
+                 <div class="form-group">
+                 	<label><h5 class="title">Reciever Name</h4></label>
+                    <input type="text" name="reciever_name" class="form-control" required>
+                </div>
+                <div class="form-group">
+                	<label><h5 class="title">Reciever Contact No</h4></label>
+                    <input type="text" name="reciever_contact" class="form-control" required>
+                </div>
+                <div class="form-group">
+                	<label><h5 class="title">Reciever Adress</h4></label>
+                    <input type="text" name="reciever_address" class="form-control" required>
+                </div>
+                <div class="form-group">
+                	<label><h5 class="title">Product Name</h4></label>
+                    <input type="text" name="product_name" class="form-control" required>
+                </div>
+                <label><h5 class="title">Product Type</h4></label>
+                <div class="form-group">
+                        <select name="product_type" class="form-control">
+                            <option value="Grocery">Grocery</option>
+                            <option value="Fashion">Fashion</option>
+                            <option value="Electronic">Electronic</option>
+                            <option value="Books">Books</option>
+                            <option value="Health & Beauty">Health & Beauty</option>
+                            <option value="Home & Lifestyle">Home & Lifestyle</option>
+                        </select>
+               </div>
+                <div class="form-group">
+                	<label><h5 class="title">Product Quantity</h4></label>
+                    <input type="number" name="product_quantity" placeholder="Each Shipment costs 45 Taka " class="form-control" required>
+                </div>
+                <label><h5 class="title">Product Weight</h4></label>
+                <div class="form-group">
+                        <select name="product_weight" class="form-control" >
+                            <option value="Below 500 gm">Below 500 gm</option>
+                            <option value="500-1000 gm">500-1000 gm</option>
+                            <option value="1-2 KG">1-2 KG</option>
+                        </select>
+               </div>
+                <div class="form-group">
+                	<label><h5 class="title"><h5 class="title">Payment Type</h4></h4></label>
+                        <select name="payment_method" class="form-control">
+                            <option value="COD">Cash On Delivery</option>
+                            <option value="bkash">bKash</option>
+                        </select>
+               </div>
+                <div style="padding-left: 40%">
+                   <input type="submit" name="Update Now" class="btn btn-outline-danger btn-lg">
+                </div>
+            </form>
+            </div>
+            
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </section><!-- #services -->
+
+{% endblock %}

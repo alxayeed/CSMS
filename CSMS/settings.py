@@ -29,6 +29,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'customer',
+    'reciever',
     # 'django.contrib.sessions',
 ]
 
@@ -49,7 +50,8 @@ TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
         'DIRS': [os.path.join(BASE_DIR, 'templates'),
-                 os.path.join(BASE_DIR, 'customer','templates')],
+                 os.path.join(BASE_DIR, 'customer','templates'),
+                 os.path.join(BASE_DIR, 'reciever','templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -113,5 +115,8 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
 
 STATIC_URL = '/static/'
+
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 
 

@@ -149,6 +149,9 @@ def make_order(request):
     u = User.objects.get(email=logged_user[3])
     profile_name  = u.first_name+' '+u.last_name
 
+    if request.method == 'GET':
+        return render(request,'customer/make_order.html',{'user':profile_name })
+
 
     if request.method == 'POST':
         order_id = orderId(6)
@@ -159,6 +162,7 @@ def make_order(request):
         reciever_name = request.POST.get('reciever_name')
         reciever_contact = request.POST.get('reciever_contact')
         reciever_address = request.POST.get('reciever_address')
+        reciever_email = request.POST.get('reciever_email')
         product_name = request.POST.get('product_name')
         product_type = request.POST.get('product_type')
         quantity = int(request.POST.get('product_quantity'))
@@ -168,7 +172,7 @@ def make_order(request):
         status = 'PENDING'
 
         if payment_method == 'bkash':
-            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
+            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,reciever_email = reciever_email, product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
                     
 
             order.save()
@@ -176,13 +180,13 @@ def make_order(request):
 
             
         else:
-            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
+            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,reciever_email=reciever_email,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
                     
 
             order.save()
 
 
-        message = 'Order Recorded Successfully.It will take 2-5 Working Days to Deliver The product'
+    message = 'Order Recorded Successfully.It will take 2-5 Working Days to Deliver The product'
         
         
         
@@ -228,6 +232,36 @@ def order_details(request,post_id):
 
         
     return render(request,'customer/view_order.html',{'context':order,'user':profile_name})
+
+
+
+
+def order_forMe(request):
+    logged_user = request.session['user']
+    profile_name  = logged_user[1]+' '+logged_user[2]
+    print(logged_user)
+
+    if request.method == 'GET':
+
+
+        order = Order.objects.get(reciever_email = logged_user[3])
+
+    return render(request,'customer/order_for_me.html',{'context':order,'user':profile_name})
+
+def order_recieved(request):
+    logged_user = request.session['user']
+    profile_name  = logged_user[1]+' '+logged_user[2]
+    
+    order = Order.objects.get(reciever_email = logged_user[3])
+    order.status = 'RECIEVED'
+    order.save()
+
+
+    return render(request,'customer/order_for_me.html',{'context':order,'user':profile_name})
+
+
+
+
 
 
 
