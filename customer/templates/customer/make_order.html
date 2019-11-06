@@ -31,18 +31,6 @@
             
             <form action="{% url 'make order' %}" method="POST">
             {% csrf_token %}
-                <div class="form-group">
-                	<label><h5 class="title">Sender Name</h4></label>
-                    <input type="text" name="sender_name" class="form-control" required>
-                </div>
-                <div class="form-group">
-                	<label><h5 class="title">Sender Contact No</h4></label>
-                    <input type="text" name="sender_contact" class="form-control" required>
-                </div>
-                <div class="form-group">
-                	<label><h5 class="title">Sender Adress</h4></label>
-                    <input type="textarea" name="sender_address" class="form-control" required>
-                </div>
                  <div class="form-group">
                  	<label><h5 class="title">Reciever Name</h4></label>
                     <input type="text" name="reciever_name" class="form-control" required>

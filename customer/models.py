@@ -24,9 +24,9 @@ class Order(models.Model):
 	reciever_address = models.TextField(max_length=100)
 
 	product_name = models.CharField(max_length=50)
-	product_type = models.CharField(max_length=15)
+	product_type = models.CharField(max_length=20)
 	product_quantity = models.BigIntegerField()
-	product_weight = models.CharField(max_length=10)
+	product_weight = models.CharField(max_length=20)
 	shipment_cost = models.IntegerField()
 	payment_method = models.CharField(max_length=10)
 

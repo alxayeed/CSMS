@@ -154,9 +154,9 @@ def make_order(request):
 
     if request.method == 'POST':
         order_id = orderId(6)
-        sender_name = request.POST.get('sender_name')
-        sender_contact = request.POST.get('sender_contact')
-        sender_address = request.POST.get('sender_address')
+        sender_name = u.first_name +' '+ u.last_name
+        sender_contact = u.contact_no
+        sender_address = u.address
 
         reciever_name = request.POST.get('reciever_name')
         reciever_contact = request.POST.get('reciever_contact')
@@ -205,7 +205,7 @@ def order_list(request):
     logged_user = request.session['user']
     print(logged_user)
     profile_name  = logged_user[1]+' '+logged_user[2]
-    order_by = logged_user[1]
+    order_by = profile_name
 
     order_list = Order.objects.all().filter(sender_name=order_by)
     print(order_list)
