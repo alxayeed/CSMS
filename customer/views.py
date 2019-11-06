@@ -149,8 +149,6 @@ def make_order(request):
     u = User.objects.get(email=logged_user[3])
     profile_name  = u.first_name+' '+u.last_name
 
-    if request.method == 'GET':
-        return render(request,'customer/make_order.html',{'user':profile_name })
 
     if request.method == 'POST':
         order_id = orderId(6)
@@ -167,9 +165,10 @@ def make_order(request):
         product_weight = request.POST.get('product_weight')
         payment_method = request.POST.get('payment_method')
         shipment_cost = quantity*50
+        status = 'PENDING'
 
         if payment_method == 'bkash':
-            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
+            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
                     
 
             order.save()
@@ -177,7 +176,7 @@ def make_order(request):
 
             
         else:
-            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost)
+            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
                     
 
             order.save()

@@ -29,6 +29,7 @@ class Order(models.Model):
 	product_weight = models.CharField(max_length=20)
 	shipment_cost = models.IntegerField()
 	payment_method = models.CharField(max_length=10)
+	status = models.CharField(max_length=20)
 
 	def __str__(self):
 		return self.product_name
