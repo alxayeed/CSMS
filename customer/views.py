@@ -257,11 +257,12 @@ def orderForMe(request,post_id):
 
     return render(request,'customer/order_for_me.html',{'context':order,'user':profile_name})
 
-def order_recieved(request):
+def order_recieved(request,order_id):
+    print(order_id)
     logged_user = request.session['user']
     profile_name  = logged_user[1]+' '+logged_user[2]
     
-    order = Order.objects.get(reciever_email = logged_user[3])
+    order = Order.objects.get(pk = order_id)
     order.status = 'RECIEVED'
     order.save()
 
