@@ -247,15 +247,13 @@ def recieverOrderList(request):
 
 
 
-def order_forMe(request):
+def orderForMe(request,post_id):
     logged_user = request.session['user']
     profile_name  = logged_user[1]+' '+logged_user[2]
-    print(logged_user)
 
     if request.method == 'GET':
-
-
-        order = Order.objects.get(reciever_email = logged_user[3])
+        logged_user = request.session['user']
+        order = Order.objects.get(pk = post_id)
 
     return render(request,'customer/order_for_me.html',{'context':order,'user':profile_name})
 
