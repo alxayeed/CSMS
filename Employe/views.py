@@ -40,7 +40,19 @@ def login(request):
 
 
 def logout(request):
-	pass
+	message = 'Successfully logged out'
+	session = request.session['user']
+	if session:
+		del session
+		message = 'Successfully logged out'
+		return render(request,'employe/login.html',{'context':message })
+	else:
+		message = 'You haven\'t logged in yet'
+		return render(request,'employe/login.html',{'context':message })
+
+
+
+	return render(request,'employe/index.html')
 
 def viewProfile(request):
 	pass
