@@ -6,3 +6,21 @@ def index(request):
 
 def login(request):
 	pass
+
+def logout(request):
+	pass
+
+def viewProfile(request):
+	pass
+
+def updateProfile(request):
+	pass
+
+def viewOrderList(request):
+	pass
+
+def viewOrderDetails(request):
+	pass
+
+def orderConfirmation(request):
+	pass
