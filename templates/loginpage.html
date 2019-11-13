@@ -1,0 +1,36 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}
+  Runtastic
+{% endblock %}
+
+{% block content%}
+  <!--==========================
+    Intro Section
+  ============================-->
+  <section id="intro">
+
+    <div class="intro-content">
+      <h1>{{ context }}</h1>
+      <h3>Please select your user type</h3>
+      <div>
+        
+        <a href="customer/log-in/" class="btn-get-started scrollto">Customer</a>
+        <a href="employe/login/" class="btn-projects scrollto">Employe</a>
+      </div>
+    </div>
+
+    <div id="intro-carousel" class="owl-carousel" >
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/1.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/2.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/3.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/4.jpg');"></div>
+      <div class="item" style="background-image: url('{% static 'img/intro-carousel/5.jpg');"></div>
+    </div>
+
+  </section><!-- #intro -->
+
+  </main>
+
+  {% endblock %}

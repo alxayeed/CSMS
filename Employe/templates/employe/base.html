@@ -77,20 +77,15 @@
       <nav id="nav-menu-container">
         <ul class="nav-menu">
           <li class="menu-active"><a href="{% url 'index' %}">Home</a></li>
-          <li><a href="#about">About Us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="{% url 'customer_index' %}">Customer</a></li>
-          <li><a href="#team">Team</a></li>
-          <li class="menu-has-children"><a href="">User</a>
+          <li class="menu-has-children"><a href="#">Order</a>
             <ul>
-              <li><a href="{% url 'sign up' %}">Sign Up</a></li>
-              <li><a href="{% url 'loginPage' %}">Log In</a></li>
-             <!--  <li><a href="#">Drop Down 4</a></li>
-              <li><a href="#">Drop Down 5</a></li> -->
+              <li><a href="{% url 'order list' %}">Order Box</a></li>
             </ul>
-          </li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+          <li class="menu-has-children"><a href="#">User</a>
+            <ul>
+              <li><a href="{% url 'profile' %}">Profile</a></li>
+              <li><a href="{% url 'log out' %}">Log Out</a></li>
+            </ul>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
@@ -98,6 +93,7 @@
 
 
 {% block content%}
+
 
 
 {% endblock %}
