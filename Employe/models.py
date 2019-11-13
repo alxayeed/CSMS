@@ -11,7 +11,17 @@ class Area(models.Model):
 
 
 class Employe(models.Model):
-	pass
+	name = models.CharField(max_length=50)
+	email = models.EmailField()
+	password = models.CharField(max_length=50)
+	contact_no = models.PositiveSmallIntegerField()
+	work_area = models.ForeignKey(Area,on_delete=models.CASCADE)
+	address = models.CharField(max_length=100)
+	date_joined = models.DateField(auto_now_add=True) 
+	
+
+	def __str__(self):
+		return self.name  
 
 
 
