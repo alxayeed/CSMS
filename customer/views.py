@@ -158,6 +158,7 @@ def make_order(request):
         sender_name = u.first_name +' '+ u.last_name
         sender_contact = u.contact_no
         sender_address = u.address
+        sender_email = u.email
 
         reciever_name = request.POST.get('reciever_name')
         reciever_contact = request.POST.get('reciever_contact')
@@ -172,7 +173,7 @@ def make_order(request):
         status = 'PENDING'
 
         if payment_method == 'bkash':
-            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,reciever_email = reciever_email, product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
+            order = Order(order_id=order_id,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,sender_email = sender_email,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,reciever_email = reciever_email, product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
                     
 
             order.save()
@@ -208,9 +209,10 @@ def order_list(request):
     logged_user = request.session['user']
     print(logged_user)
     profile_name  = logged_user[1]+' '+logged_user[2]
-    order_by = profile_name
+    sender_email = logged_user[3]
+    
 
-    order_list = Order.objects.all().filter(sender_name=order_by)
+    order_list = Order.objects.all().filter(sender_email=sender_email)
     print(order_list)
 
     return render(request,'customer/order_list.html',{'order_list':order_list,'user':profile_name})
@@ -226,13 +228,22 @@ def order_details(request,post_id):
     if request.method == 'GET':
         logged_user = request.session['user']
         order_by = logged_user[1]
-        print(order_by)
 
         order = Order.objects.get(pk = post_id)
 
         
     return render(request,'customer/view_order.html',{'context':order,'user':profile_name})
 
+def recieverOrderList(request):
+    logged_user = request.session['user']
+    print(logged_user)
+    profile_name  = logged_user[1]+' '+logged_user[2]
+    reciever = logged_user[3]
+
+    order_list = Order.objects.all().filter(reciever_email=reciever)
+    print(order_list)
+
+    return render(request,'customer/order_for_me_list.html',{'order_list':order_list,'user':profile_name})
 
 
 

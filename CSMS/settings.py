@@ -22,6 +22,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # 'customer.apps.Customer' #ModuleNotFoundError: No module named 'customer.apps.CustomerConfigdjango'; 'customer.apps' is not a package
+    'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
