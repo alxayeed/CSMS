@@ -86,5 +86,14 @@ def viewOrderDetails(request,order_id):
 		
 	return render(request,'employe/view_order.html',{'context':order,'user':profile_name})
 
-def orderConfirmation(request):
-	pass
+def orderConfirmation(request,order_id):
+	print(order_id)
+	logged_user = request.session['user']
+	profile_name  = logged_user[4]
+	
+	order = Order.objects.get(pk = order_id)
+	order.status = 'DELIVERED'
+	order.save()
+
+
+	return render(request,'employe/view_order.html',{'context':order,'user':profile_name})
