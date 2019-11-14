@@ -1,5 +1,6 @@
 from django.shortcuts import render
 from .models import Area,Employe
+from customer.models import Order 	
 from django.db import connection
 
 # Create your views here.
@@ -61,7 +62,16 @@ def updateProfile(request):
 	pass
 
 def viewOrderList(request):
-	pass
+	logged_user = request.session['user']
+	print(logged_user)
+	profile_name  = logged_user[4]
+	work_area = logged_user[1]
+	
+
+	order_list = Order.objects.all().filter(order_area=work_area)
+	print(order_list)
+
+	return render(request,'customer/order_list.html',{'order_list':order_list,'user':profile_name})
 
 def viewOrderDetails(request):
 	pass

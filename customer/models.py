@@ -19,6 +19,7 @@ class Order(models.Model):
 	sender_contact = models.CharField(max_length=11)
 	sender_address = models.TextField(max_length=100)
 	sender_email = models.EmailField()
+	order_area = models.CharField(max_length=20)
 
 	reciever_name = models.CharField(max_length=100)
 	reciever_contact = models.CharField(max_length=11)

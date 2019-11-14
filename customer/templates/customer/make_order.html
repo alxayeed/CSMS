@@ -31,6 +31,16 @@
             
             <form action="{% url 'make order' %}" method="POST">
             {% csrf_token %}
+              <label><h5 class="title">Select Area</h4></label>
+                <div class="form-group">
+                        <select name="order_area" class="form-control">
+                            <option value="Banani">Banani</option>
+                            <option value="Farmgate">Farmgate</option>
+                            <option value="Gulshan">Gulshan</option>
+                            <option value="Kuril">Kuril</option>
+                            <option value="Uttara">Uttara</option>
+                        </select>
+               </div>
                  <div class="form-group">
                  	<label><h5 class="title">Reciever Name</h4></label>
                     <input type="text" name="reciever_name" class="form-control" required>
