@@ -71,10 +71,20 @@ def viewOrderList(request):
 	order_list = Order.objects.all().filter(order_area=work_area)
 	print(order_list)
 
-	return render(request,'customer/order_list.html',{'order_list':order_list,'user':profile_name})
+	return render(request,'employe/order_list.html',{'order_list':order_list,'user':profile_name})
 
-def viewOrderDetails(request):
-	pass
+def viewOrderDetails(request,order_id):
+	logged_user = request.session['user']
+	profile_name  = logged_user[4]
+
+	if request.method == 'GET':
+		logged_user = request.session['user']
+		order_by = logged_user[1]
+
+		order = Order.objects.get(pk = order_id)
+
+		
+	return render(request,'employe/view_order.html',{'context':order,'user':profile_name})
 
 def orderConfirmation(request):
 	pass

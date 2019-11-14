@@ -81,11 +81,12 @@
             <ul>
               <li><a href="{% url 'Employe Order List' %}">Order Box</a></li>
             </ul>
-          <li class="menu-has-children"><a href="#">User</a>
+          <li class="menu-has-children"><a href="#">{{user}}</a>
             <ul>
               <li><a href="{% url 'profile' %}">Profile</a></li>
               <li><a href="{% url 'Employe logout' %}">Log Out</a></li>
             </ul>
+          </li>
       </nav><!-- #nav-menu-container -->
     </div>
   </header><!-- #header -->
