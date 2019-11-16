@@ -6,11 +6,11 @@
 {% endblock %}
 
 {% block content%}
-		<div class="container" style="max-width:30%";>
+		<div class="container" style="min-width:30%;max-width:30%";>
 			 <h4 class="text-danger" style="padding-left:10%;padding-top: 15px;">{{ context }} </h4>
 		</div>
 
-        <div class="container" style="max-width:30%";>
+        <div class="container" style="min-width:30%;max-width:30%">
             <h3 class="text-success" style="padding-left:10%;padding-top: 15px">User Registration</h3>
             <hr /><hr />
         	<form action="{% url 'sign up' %}" method="POST">
