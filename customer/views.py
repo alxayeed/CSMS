@@ -3,6 +3,7 @@ from .models import User,Order
 from django.db import connection
 import string
 import random
+from Employe.models import Area
 
 
 # Create your views here.
@@ -148,9 +149,10 @@ def make_order(request):
     logged_user = request.session['user']
     u = User.objects.get(email=logged_user[3])
     profile_name  = u.first_name+' '+u.last_name
+    area_list = Area.objects.all()
 
     if request.method == 'GET':
-        return render(request,'customer/make_order.html',{'user':profile_name })
+        return render(request,'customer/make_order.html',{'user':profile_name,'area_list':area_list})
 
 
     if request.method == 'POST':

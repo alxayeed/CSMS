@@ -33,13 +33,13 @@
             {% csrf_token %}
               <label><h5 class="title">Select Area</h4></label>
                 <div class="form-group">
+                        
                         <select name="order_area" class="form-control">
-                            <option value="Banani">Banani</option>
-                            <option value="Farmgate">Farmgate</option>
-                            <option value="Gulshan">Gulshan</option>
-                            <option value="Kuril">Kuril</option>
-                            <option value="Uttara">Uttara</option>
+                          {% for area in area_list %}
+                            <option value="{{ area.area_code }}">{{ area.area_name }}</option>
+                            {% endfor %}
                         </select>
+                       
                </div>
                  <div class="form-group">
                  	<label><h5 class="title">Reciever Name</h4></label>
