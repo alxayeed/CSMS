@@ -1,0 +1,10 @@
+#Django#
+#before creating .gitignore or adding the followings,
+#clean the working directory by staging and committing all changes 
+*.pyc
+*/*/*/__pycache__
+*/*/__pycache__
+*/__pycache__
+
+#now run this command 
+#git rm -rf --cached .#
