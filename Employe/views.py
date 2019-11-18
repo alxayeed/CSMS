@@ -65,7 +65,7 @@ def viewOrderList(request):
 	logged_user = request.session['user']
 	print(logged_user)
 	profile_name  = logged_user[4]
-	work_area = logged_user[1]
+	work_area = logged_user[6]
 	
 
 	order_list = Order.objects.all().filter(order_area=work_area)

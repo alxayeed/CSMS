@@ -177,35 +177,27 @@ def make_order(request):
 
         if payment_method == 'bkash':
             order = Order(order_id=order_id,order_area=order_area,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,sender_email = sender_email,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,reciever_email = reciever_email, product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
-                    
-
             order.save()
-            return render(request,'customer/bkash.html',{'user':profile_name,'order_id':order_id} )
+            return render(request,'customer/bkash.html',{'user':profile_name,'order':order} )
 
             
         else:
-            order = Order(order_id=order_id,order_area=order_area,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,sender_email=sender_email,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,reciever_email=reciever_email,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)
-                    
-
+            order = Order(order_id=order_id,order_area=order_area,sender_name=sender_name,sender_contact=sender_contact,sender_address=sender_address,sender_email=sender_email,reciever_name=reciever_name,reciever_contact=reciever_contact,reciever_address=reciever_address,reciever_email=reciever_email,product_name=product_name,product_type=product_type,product_quantity=quantity,product_weight=product_weight,payment_method=payment_method,shipment_cost=shipment_cost,status=status)   
             order.save()
 
 
     message = 'Order Recorded Successfully.It will take 2-5 Working Days to Deliver The product'
-        
-        
-        
-
-
 
     return render(request,'customer/notify.html',{'context':message,'user':profile_name ,'order_id':order_id })
 
-def payment(request):
+def payment(request,order_id):
+    print(order_id)
     logged_user = request.session['user']
     u = User.objects.get(email=logged_user[3])
     profile_name  = u.first_name+' '+u.last_name
     message = 'Order Recorded Successfully.It will take 2-5 Working Days to Deliver The product'
         
-    return render(request,'customer/notify.html',{'context':message,'user':profile_name  })
+    return render(request,'customer/notify.html',{'context':message,'user':profile_name,'order_id':order_id  })
 
 
 def order_list(request):

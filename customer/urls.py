@@ -12,7 +12,7 @@ urlpatterns = [
     path('reciever-order-list/',views.recieverOrderList,name='OrderList forMe'),
     path('reciever-view-order/<post_id>/',views.orderForMe,name='reciever order details'),
     path('order-recieved/<order_id>/',views.order_recieved,name='Order Recieved'),
-    path('payment/',views.payment,name='payment'),
+    path('payment/<order_id>',views.payment,name='payment'),
     path('order-list/',views.order_list,name='order list'),
     path('view-order/<post_id>/',views.order_details,name='order details'),
 
