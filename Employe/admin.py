@@ -1,13 +1,16 @@
 from django.contrib import admin
 from .models import Area,Employe
 
+class AreaAdmin(admin.ModelAdmin):
+	list_display = ['area_code','area_name']
+	list_filter = ['area_code','area_name']
+	search_fields = ['area_code','area_name']
 
-# class RatingAdmin(admin.ModelAdmin):
-#     readonly_fields = ('date')
+admin.site.register(Area,AreaAdmin)
 
-
-# # Register your models here.
-# admin.site.register(Rating,RatingAdmin)
-admin.site.register(Area)
-admin.site.register(Employe)
+class EmployeAdmin(admin.ModelAdmin):
+	list_display=['name','email','contact_no','work_area','address',]
+	list_filter=['name','email','contact_no','work_area','address',]
+	search_fields =['name','email','contact_no','work_area','address',]
+admin.site.register(Employe,EmployeAdmin)
 

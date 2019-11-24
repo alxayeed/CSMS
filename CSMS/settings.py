@@ -1,15 +1,7 @@
-
-
 import os
 Temp_path = os.path.realpath('.')
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/2.2/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'gtw0_jirr4p_jvk94y939@&kl8zwkhkv(ocx@$=#)5_%366sw7'
 
 # SECURITY WARNING: don't run with debug turned on in production!
@@ -23,7 +15,7 @@ ALLOWED_HOSTS = ['alxayeed.pythonanywhere.com',
 
 INSTALLED_APPS = [
     # 'customer.apps.Customer' #ModuleNotFoundError: No module named 'customer.apps.CustomerConfigdjango'; 'customer.apps' is not a package
-    'django_extensions',
+    # 'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -32,6 +24,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customer',
     'Employe',
+    'material.admin',
+
     # 'django.contrib.sessions',
 ]
 
