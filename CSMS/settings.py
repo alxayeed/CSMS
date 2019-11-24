@@ -24,7 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customer',
     'Employe',
-    'material.admin',
+    # 'material.admin',
 
     # 'django.contrib.sessions',
 ]
