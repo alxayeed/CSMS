@@ -14,8 +14,6 @@ ALLOWED_HOSTS = ['alxayeed.pythonanywhere.com',
 # Application definition
 
 INSTALLED_APPS = [
-    # 'customer.apps.Customer' #ModuleNotFoundError: No module named 'customer.apps.CustomerConfigdjango'; 'customer.apps' is not a package
-    # 'django_extensions',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -24,9 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'customer',
     'Employe',
-    # 'material.admin',
-
-    # 'django.contrib.sessions',
+    'import_export',
 ]
 
 MIDDLEWARE = [
