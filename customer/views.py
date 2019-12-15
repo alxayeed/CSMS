@@ -95,7 +95,7 @@ def customer_logout(request):
 
 def profile(request):
     logged_user = request.session['user']
-    profile_name  = logged_user[1]+' '+logged_user[2]
+    profile_name  = logged_user[4]
     print(logged_user)
     
     return render(request,'customer/profile.html',{'user':profile_name,'logged_user':logged_user })

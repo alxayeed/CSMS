@@ -22,6 +22,7 @@ admin.site.register(User,UserAdmin)
 class OrderAdmin(ImportExportModelAdmin):
 	list_display=('order_id','sender_name','sender_email','reciever_name','reciever_email','product_name','status')
 	list_filter=('sender_name','sender_email','reciever_name','reciever_email','product_name','status')
+	# search_fields = ('order_id','sender_name','order_area')
 	readonly_fields = [field.name for field in Order._meta.get_fields()]
 
 admin.site.register(Order,OrderAdmin)

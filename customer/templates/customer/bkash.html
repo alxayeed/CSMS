@@ -7,7 +7,7 @@
 
 {% block content%}
 <div style="padding-top: 5%;padding-left:30%;max-width: 70%">
-  <h3>Your order number is {{ order.order_id }}</h3>
+  <!-- <h3>Your order number is {{ order.order_id }}</h3> -->
   <h3>Please Enter your Transaction ID here</h3>
 
   <form action="{% url 'payment' order.order_id %}" method="POST">
